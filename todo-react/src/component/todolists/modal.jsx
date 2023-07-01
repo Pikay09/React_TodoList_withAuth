@@ -7,7 +7,7 @@ function ModalComponent (props) {
     const [modal, setModal] = useState(false);
     const [update, setUpdate] = useState(props.iscompleted)
     const {todos, setTodos} = useContext(UserContext)
-    const backendUrl = "http://localhost:3003/api"
+    const backendUrl = process.env.REACT_APP_BACKEND_URL
   
     const toggle = () => setModal(!modal);
   

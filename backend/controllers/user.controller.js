@@ -4,8 +4,12 @@ import { User } from "../models/user.models.js";
 import bcrypt from "bcrypt";
 import jwt from 'jsonwebtoken'
 import {authenticateUser} from "../middlewares/auth.middleware.js";
+import dotenv from 'dotenv'
+dotenv.config()
 
 const router = Router();
+
+const {SECRET} = process.env
 
 /**
  * @description Used to get most up-to-date information on user
@@ -39,7 +43,7 @@ router.post("/login", async (req, res) => {
         .json({ message: responseList.USER_PASSWORD_ERROR });
     }
     // const token = jwt.sign({user_id: user._id}, "something_secret", { expiresIn: 36})
-    const token = jwt.sign({user_id: user._id}, "something_secret")
+    const token = jwt.sign({user_id: user._id}, SECRET)
     res.status(200).json({ token, user:req.user });
   } catch (e) {
     console.log(e)
@@ -61,7 +65,7 @@ router.post("/register", async (req, res) => {
     };
     const user = new User(userDataToSave);
     await user.save();
-    const token = jwt.sign({user_id: user._id}, "something_secret")
+    const token = jwt.sign({user_id: user._id}, SECRET)
     res.status(200).json({ message: responseList.CREATED_SUCCESS, token });
   } catch (e) {
     res.status(400).json({ message: responseList.BAD_REQUEST });

@@ -9,7 +9,7 @@ export default function CreateTodos (){
     
     const [todo, setTodo] = useState(todoItem)
 
-    const backendUrl = "http://localhost:3003/api/v2/todos"
+    const backendUrl = process.env.REACT_APP_BACKEND_URL
 
     const handleChange =(e)=>{
         const newTodoItem = {...todo, [e.target.name]:e.target.value}
@@ -21,7 +21,7 @@ export default function CreateTodos (){
         navi('/todos')
         const token = sessionStorage.getItem("token")
         try{
-           const res = await axios.post(backendUrl, todo, {
+           const res = await axios.post(`${backendUrl}/v2/todos`, todo, {
             headers:{
                 Authorization: `Bearer ${token}`
             }

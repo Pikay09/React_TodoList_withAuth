@@ -7,14 +7,14 @@ export default function Signup (){
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
 
-    const backendUrl = `http://localhost:3003/api/v1/register`
+    const backendUrl = process.env.REACT_APP_BACKEND_URL
     const navi = useNavigate()
 
 
     const handleSubmit = async(e) =>{
         e.preventDefault()
         try{
-           const response = await axios.post(backendUrl, {username:username ,password:password})
+           const response = await axios.post(`${backendUrl}/v1/register`, {username:username ,password:password})
            console.log(response)
            if(response.status === 200){
                 alert(`Succesfully Created user: ${username}`)

@@ -1,6 +1,8 @@
 import {responseList} from "../config/response-list.js";
 import jwt from "jsonwebtoken";
 import {User} from "../models/user.models.js";
+import dotenv from 'dotenv'
+dotenv.config()
 
 export async function authenticateUser(req, res, next){
     const bearerToken = req.headers.authorization
@@ -12,7 +14,7 @@ export async function authenticateUser(req, res, next){
         return res.status(401).json({ message:  responseList.NOT_TOKEN})
     }
     try{
-        const decodedToken = jwt.verify(token, "something_secret")
+        const decodedToken = jwt.verify(token, process.env.SECRET)
         if(!decodedToken){
             return res.status(401).json({ message: responseList.INVALID_TOKEN})
         }

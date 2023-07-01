@@ -13,7 +13,7 @@ function TodoProvider ({children}){
     const [isLoggedin, setIsLoggedin] = useState(null)
     const navi = useNavigate()
 
-    const backendUrl = "http://localhost:3003/api"
+    const backendUrl = process.env.REACT_APP_BACKEND_URL
 
       useEffect(()=>{
         const fetchData = async()=>{

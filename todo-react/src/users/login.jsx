@@ -8,14 +8,14 @@ export default function Login (){
     const [password, setPassword] = useState('')
     // const [user, setUser] = useState(null)
 
-    const backendUrl = `http://localhost:3003/api/v1/login`
+    const backendUrl = process.env.REACT_APP_BACKEND_URL
     const navi = useNavigate()
 
     const handleSubmit = async(e) =>{
         e.preventDefault()
 
         try{
-            const response = await axios.post(backendUrl, {username, password})
+            const response = await axios.post(`${backendUrl}/v1/login`, {username, password})
 
             if(response.status === 200){
                 console.log(response.data.token)
