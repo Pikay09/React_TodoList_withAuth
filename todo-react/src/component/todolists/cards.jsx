@@ -3,7 +3,7 @@ import ModalComponent from './modal'
 import { UserContext } from '../../context/users'
 import { useContext } from 'react'
 
-export default function Cards ({title, description, iscompleted, updated, id}){
+export default function Cards ({title, description, iscompleted, updated, id, user_id}){
     const {isLoggedin} = useContext(UserContext)
 
     const theme = iscompleted === "false"? 'cardone': 'cardtwo'
@@ -31,6 +31,7 @@ export default function Cards ({title, description, iscompleted, updated, id}){
             description={description}
             iscompleted={iscompleted}
             id={id}
+            user={user_id}
             />: ""}
             
         </CardBody>

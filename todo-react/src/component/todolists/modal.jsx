@@ -6,7 +6,7 @@ import axios from 'axios';
 function ModalComponent (props) {
     const [modal, setModal] = useState(false);
     const [update, setUpdate] = useState(props.iscompleted)
-    const {todos, setTodos} = useContext(UserContext)
+    const {todos, setTodos, user} = useContext(UserContext)
     const backendUrl = process.env.REACT_APP_BACKEND_URL
   
     const toggle = () => setModal(!modal);
@@ -20,21 +20,31 @@ function ModalComponent (props) {
       },[props.iscompleted])
       
     const handleDelete = async()=>{
-      await axios.delete(`${backendUrl}/v2/todos/${props.id}`)
-      toggle()
+      if(user._id === props.user){
+        await axios.delete(`${backendUrl}/v2/todos/${props.id}`)
+        toggle()
+      }else{
+        alert("OOPS can't delete")
+      }
     }
   
     const handleUpdate= async()=>{
       setUpdate(!update)
       setTodos(todos)
+      // console.log("user",user._id,"props",props.user)
   
+      if(user._id === props.user){
         try{
-         await axios.patch(`${backendUrl}/v2/todos/${props.id}`, {isCompleted: update})
-          .then(data=>console.log(data.data))
-        }catch(err){
-          console.log(err)
-        }
+          await axios.patch(`${backendUrl}/v2/todos/${props.id}`, {isCompleted: update})
+           .then(data=>console.log(data.data))
+         }catch(err){
+           console.log(err)
+         }
+      }else{
+        alert("OOPS can't update")
       }
+      
+    }
     
   
     return (
