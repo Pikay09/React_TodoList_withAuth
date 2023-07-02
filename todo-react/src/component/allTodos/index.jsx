@@ -17,7 +17,7 @@ function AllNotes (){
                         id={todo._id}
                         iscompleted={todo.isCompleted.toString()}
                         description={todo.description}
-                        updated={date.getDate()}
+                        updated={date}
                         user_id={todo.user}
                         />
                 }): <h1>fetching...</h1>}

@@ -54,7 +54,7 @@ function App() {
         }/>
       </Routes>
     <div id="footer">
-     Copyright General Assembly Malaysia 2023 
+    © 2023 AkademiGA. All rights reserved. 
     </div>
     </div>
   );

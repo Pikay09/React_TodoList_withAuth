@@ -1,7 +1,7 @@
 .App {
   text-align: center;
   background-color: rgb(139, 139, 226);
-  height: 140vh;
+  min-height: 140vh;
 }
 .container{
   height: 80vh;
@@ -29,9 +29,16 @@
 .navbar{
   width: 100vw;
   height: 80px;
-  margin-top: 0px;
   color: white;
   padding: 20px;
+  color: white;
+  background-color: black;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 8px;
+  text-align: center;
 }
 
 .cardone{
@@ -44,9 +51,21 @@
 }
 
 #footer{
-  margin-bottom: 0px;
-  width: 100vw;
-  height: 20%;
   color: white;
   background-color: black;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 8px;
+  text-align: center;
+}
+
+label{
+  padding: 30px;
+  margin: 30px
+}
+input{
+  background-color: rgb(36, 27, 27);
+  color: white
 }

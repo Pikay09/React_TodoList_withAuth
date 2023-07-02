@@ -22,7 +22,11 @@ export default function Navbar (){
         </NavLink>
         <NavLink
           to="/">
-          <img src="../ga_cog.png" alt="fetching..."/>
+          <img 
+          src="../logo-on-light.svg" 
+          alt="fetching..."
+          height={27}
+          />
         </NavLink>
         <NavLink
           to="/create">

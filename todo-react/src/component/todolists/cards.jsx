@@ -18,7 +18,13 @@ export default function Cards ({title, description, iscompleted, updated, id, us
             className="mb-2 text-muted"
             tag="h6"
             >
-            Created: {updated}
+            Created: {updated.toLocaleDateString()}
+            </CardSubtitle>
+            <CardSubtitle
+            className="mb-2 text-muted"
+            tag="h6"
+            >
+            At: {updated.toLocaleTimeString()}
             </CardSubtitle>
             <CardText>
             {description}
