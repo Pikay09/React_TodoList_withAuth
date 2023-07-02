@@ -6,8 +6,8 @@ function AllNotes (){
 
     const {allTodos} = useContext(UserContext)
 
-    return <div>
-         <h1>Here is my Todos</h1>
+    return <div className="container">
+         <h1>All Notes</h1>
         <div className="row justify-content-around gap-5 p-3">
             {allTodos? allTodos.map((todo)=>{
                     const date = new Date(todo.updatedAt)

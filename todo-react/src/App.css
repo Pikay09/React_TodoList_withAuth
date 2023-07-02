@@ -3,6 +3,9 @@
   background-color: rgb(139, 139, 226);
   height: 140vh;
 }
+.container{
+  height: 80vh;
+}
 .App-logo {
   height: 40vmin;
   pointer-events: none;

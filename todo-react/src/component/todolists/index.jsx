@@ -6,7 +6,7 @@ import Cards from "./cards"
 export default function Todos (){
     const {todos} = useContext(UserContext)
 
-    return <div >
+    return <div className="container">
         <h1>Here is my Todos</h1>
         <div className="row justify-content-around gap-5 p-3">
             {todos? todos.map((todo)=>{

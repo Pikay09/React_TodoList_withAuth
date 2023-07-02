@@ -21,9 +21,9 @@ function App() {
   // create private route
   const PrivateRoute = ({children})=>{
     if(!isAuthenticated()){
-      return <h1>Please login to continue</h1>
+      return <h1 className='container'>Please login to continue</h1>
     }
-    return children
+    return <div className='container'>{children}</div>
 
   }
 

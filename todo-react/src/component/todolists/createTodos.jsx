@@ -1,6 +1,7 @@
 import {useState} from 'react'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
+import Loading from '../loading'
 
 export default function CreateTodos (){
     const navi = useNavigate()
@@ -8,6 +9,7 @@ export default function CreateTodos (){
     const todoItem = {title:"", isCompleted:false, description: ""}
     
     const [todo, setTodo] = useState(todoItem)
+    const [loading, setLoading] = useState(false)
 
     const backendUrl = process.env.REACT_APP_BACKEND_URL
 
@@ -18,6 +20,7 @@ export default function CreateTodos (){
 
     const handleSubmit = async(e)=>{
         e.preventDefault()
+        setLoading(true)
         navi('/todos')
         const token = sessionStorage.getItem("token")
         try{
@@ -26,16 +29,19 @@ export default function CreateTodos (){
                 Authorization: `Bearer ${token}`
             }
            })
-           if(res.statusText === "ok"){
+           if(res.status === 201){
             setTodo(res.data)
+            setLoading(false)
             navi('/todos')
            }
         }catch(err){
-            console.log(err)
+            alert(err)
+            setLoading(false)
         }
     }
 
-    return <div style={{width: "50vw", margin:"auto"}}>
+    return <div style={{width: "50vw", margin:"auto", height:"100vh"}}>
+        {loading? <Loading/>: ''}
         <form onSubmit={handleSubmit} className='row g-3 align-items-center'>
             <label className='form-label mb-3'>
                 Title

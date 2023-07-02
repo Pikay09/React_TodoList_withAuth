@@ -12,7 +12,7 @@ export default function SecuredPage (){
         navi("/login")
       }
     
-    return <div>
+    return <div className="container">
         <button onClick={logout}>logout</button>
         <h1>This is authenticated page safe to use</h1>
 

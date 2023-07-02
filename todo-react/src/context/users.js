@@ -35,7 +35,7 @@ function TodoProvider ({children}){
             }
         }
         fetchData()
-      }, [navi,user])
+      }, [navi,user, backendUrl])
     
       useEffect(()=>{
         const fetchTodos = async()=>{
@@ -54,7 +54,7 @@ function TodoProvider ({children}){
             }
         }
         fetchTodos()
-    },[navi,user])
+    },[navi,user, backendUrl])
 
     useEffect(()=>{
         const fetchTodos=async()=>{
@@ -66,7 +66,7 @@ function TodoProvider ({children}){
             }
         }
         fetchTodos()
-    },[])
+    },[navi,user, backendUrl])
 
 
       const value = {
