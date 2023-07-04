@@ -9,7 +9,7 @@ function TodoProvider ({children}){
 
     const [user, setUser] = useState('')
     const [todos, setTodos] = useState([])
-    const [allTodos, setAllTodos] = useState([])
+    const [allTodos, setAllTodos] = useState(null)
     const [isLoggedin, setIsLoggedin] = useState(null)
     const navi = useNavigate()
 
