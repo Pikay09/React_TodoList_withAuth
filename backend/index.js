@@ -12,7 +12,10 @@ import {responseList} from "./config/response-list.js";
 const app = express()
 const PORT = process.env.PORT || 3000
 
-app.use(cors())
+app.use(cors({
+    origin: process.env.CORS_OPTIONS,
+    optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+  }))
 app.use(express.json())
 app.use(express.urlencoded())
 mongoose.connect(process.env.MONGODB).then(() => {
